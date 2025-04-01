@@ -7,7 +7,8 @@ class infusionsoft_redirect extends INF_Infusionsoft {
 
 	public function __construct() {
 		parent::__construct();
-		$this->permissionsCheck();
+		// NOT NEEDED
+		// $this->permissionsCheck();
 	}
 
 	function redirect_authorize( $name ) {

@@ -2,9 +2,9 @@
 Contributors: Keap
 Tags: keap, keap api, keap wordpress, wordpress popup plugin, infusionsoft
 Requires at least: 6.0
-Tested up to: 6.6
+Tested up to: 6.7.2
 Requires PHP: 8.0
-Stable tag: 2.0.1
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,12 @@ Keap’s import/export function allows you to easily export any opt-in form you 
 
 == Changelog ==
 
+= 2.0.3 =
+* Changes to enforcement of authorization based on user role.
+
+= 2.0.2 =
+* Fixes issue with service parameter processing.
+
 = 2.0.1 =
 * Update API Key field label to reflect support for Personal Access Tokens (PAT) and Service Account Keys (SAK).
 
@@ -150,6 +156,12 @@ Keap’s import/export function allows you to easily export any opt-in form you 
 4. This shows the new WordPress Goal inside the Cmampaign Builder
 
 == Upgrade Notice ==
+
+= 2.0.3 =
+Changes to enforcement of authorization based on user role.
+
+= 2.0.2 =
+Fixes issue with service parameter processing.
 
 = 2.0.1 =
 Update API Key field label to reflect support for Personal Access Tokens (PAT) and Service Account Keys (SAK).

@@ -69,6 +69,8 @@ class INF_Dashboard {
 
 	function permissionsCheck() {
 		if ( ! current_user_can( 'manage_options' ) ) {
+			die();
+		} else {
 			return;
 		}
 	}
@@ -1308,7 +1310,6 @@ class INF_Dashboard {
 	}
 
 	function process_settings_export() {
-		$this->permissionsCheck();
 		if ( empty( $_POST['inf_dashboard_action'] ) || 'export_settings' !== $_POST['inf_dashboard_action'] ) {
 			return;
 		}
@@ -1345,7 +1346,6 @@ class INF_Dashboard {
 	 * importing data using 'inf_<plugin_name>_import_array' filter
 	 */
 	function process_settings_import() {
-		$this->permissionsCheck();
 		if ( empty( $_POST['inf_dashboard_action'] ) || 'import_settings' !== $_POST['inf_dashboard_action'] ) {
 			return;
 		}

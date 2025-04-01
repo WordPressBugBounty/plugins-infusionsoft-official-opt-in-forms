@@ -1,3 +1,9 @@
+version 2.0.3
+- Changes to enforcement of authorization based on user role.
+
+version 2.0.2
+- Fixes issue with service parameter processing.
+
 version 2.0.1
 - Update API Key field label to reflect support for Personal Access Tokens (PAT) and Service Account Keys (SAK).
 

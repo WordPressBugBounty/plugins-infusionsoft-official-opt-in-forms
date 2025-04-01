@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Keap Official Opt-in Forms
  * Plugin URI: https://www.keap.com
- * Version: 2.0.1
+ * Version: 2.0.3
  * Description: Keap Official Opt-in Forms
  * Author: Keap
  * Author URI: https://www.keap.com
@@ -858,7 +858,6 @@ SOL;
 	 * values
 	 */
 	function get_premade_values() {
-		$this->permissionsCheck();
 		$isRapidBar = '';
 		$isRedirect = '';
 		if ( ! wp_verify_nonce( $_POST['infusionsoft_premade_nonce'], 'infusionsoft_premade' ) ) {
@@ -2276,7 +2275,6 @@ SOL;
 	 * @return void
 	 */
 	function update_stats_for_winner( $optin_id, $winner_id ) {
-		$this->permissionsCheck();
 		global $wpdb;
 
 		$table_name = $wpdb->prefix . 'inf_infusionsoft_stats';
@@ -2298,7 +2296,6 @@ SOL;
 	 * @return string
 	 */
 	function perform_option_duplicate( $duplicate_optin_id, $duplicate_optin_type = '', $is_child = false ) {
-		$this->permissionsCheck();
 		$new_optin_id = $this->generate_optin_id();
 		$suffix       = true == $is_child ? '_child' : '_copy';
 
@@ -2535,6 +2532,10 @@ SOL;
 		$name            = ! empty( $_POST['infusionsoft_upd_name'] ) ? sanitize_text_field( strtolower( $_POST['infusionsoft_upd_name'] ) ) : '';
 		$update_existing = ! empty( $_POST['infusionsoft_account_exists'] ) ? sanitize_text_field( $_POST['infusionsoft_account_exists'] ) : '';
 
+		if ($service != 'infusionsoft' && $service != 'redirect') {
+			$service='';	
+		}
+
 		//include class to get functions below
 		if ( ! class_exists( 'infusionsoft_' . $service ) ) {
 			require_once( INF_INFUSIONSOFT_PLUGIN_DIR . 'includes/classes/integrations/class.infusionsoft-' . $service . '.php' );
@@ -2578,7 +2579,6 @@ SOL;
 	 * Handles subscribe action and sends the success or error message to jQuery.
 	 */
 	function subscribe() {
-		$this->permissionsCheck();
 		if ( ! wp_verify_nonce( $_POST['subscribe_nonce'], 'subscribe' ) ) {
 			die( - 1 );
 		}
@@ -2594,6 +2594,10 @@ SOL;
 		$list_id      = sanitize_text_field( $subscribe_data_array['list_id'] );
 		$page_id      = sanitize_text_field( $subscribe_data_array['page_id'] );
 		$optin_id     = sanitize_text_field( $subscribe_data_array['optin_id'] );
+
+		if ($service != 'infusionsoft' && $service != 'redirect') {
+			$service='';	
+		}
 
 		//include class to get functions below
 		if ( ! class_exists( 'infusionsoft_' . $service ) ) {
@@ -2714,6 +2718,10 @@ SOL;
 				</div>', esc_attr( 'name_' . $service ), __( 'Account Name', 'infusionsoft' ),
 				esc_attr( $account_name ),
 				INF_Infusionsoft::generate_hint( __( 'Enter the name for your account', 'infusionsoft' ), true ) );
+		}
+
+		if ($service != 'infusionsoft' && $service != 'redirect') {
+			$service='';	
 		}
 
 		//include class to get functions below

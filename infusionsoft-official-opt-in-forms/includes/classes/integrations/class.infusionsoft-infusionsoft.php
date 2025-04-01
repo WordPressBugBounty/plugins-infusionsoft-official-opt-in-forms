@@ -8,7 +8,6 @@ class infusionsoft_infusionsoft extends INF_Infusionsoft {
 
 	public function __contruct() {
 		parent::__construct();
-		$this->permissionsCheck();
 	}
 
 	public function draw_infusionsoft_form( $form_fields, $service, $field_values ) {
